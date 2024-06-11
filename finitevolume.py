@@ -256,7 +256,7 @@ def main():
   
 
   # Define the target density field from .png image
-  rho_target = jnp.fliplr(jnp.array(img.imread('target.png')[:,:,0],dtype=float))
+  rho_target = jnp.flipud(jnp.array(img.imread('target.png')[:,:,0],dtype=float))
   rho_target = 1.0 + 0.02*(rho_target-0.5)
   # normalize so average density is 1
   rho_target /= jnp.mean(rho_target)
@@ -289,7 +289,7 @@ def main():
     # Make Plot
     plt.cla()
     plt.imshow(rho, cmap=cmap)
-    plt.clim(.85,1.15)
+    plt.clim(0.9,1.1)
     ax = plt.gca()
     ax.invert_yaxis()
     ax.get_xaxis().set_visible(False)
